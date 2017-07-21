@@ -113,7 +113,7 @@ img {
   background-color: #334;
   height: 100px;
   width: 100%;
-  bottom: 12px;
+  bottom: 10px;
 }
 .js .videoBox .controlBar .videoButton,
 .js .controlBar .videoButton {
@@ -165,6 +165,7 @@ img {
   background: black;
   top: 0;
 }
-.fullsizeVideo > video {
-  width: 100%;
+.fullsizeVideo .videoBox {
+  position: absolute;
+  margin: 0;
 }

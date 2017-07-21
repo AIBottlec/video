@@ -88,25 +88,12 @@
 				video.pause(); 
 			} 
 		},
-		// 全屏
-		/*fullScreenOn : function() { 
-			isVideoFullScreen = true; 
-			// Set new width according to window width
-			videoPar.style.cssText = 'display:block;background:black;position:absolute;bottom:0;left:0;z-index:100;padding:0;position: absulute;overflow:hidden;'+
-			 'width:' + window.innerWidth +'px;height:' + window.innerHeight +  'px;'; 
-			// Apply a classname to the video and controls, if the designer needs it... 
-			// videoBox.className = 'fullsizeVideo'; 
-			// videoControls.className = 'fs-control'; 
-			// fullScreenToggleButton.className = "fs-active control"; 
-			// Listen for escape key. If pressed, close fullscreen. 
-			// document.addEventListener('keydown', this.checkKeyCode, false); 
-		}, */
 		fullScreenOn : function() { 
 			isVideoFullScreen = true;
 			// Set new width according to window width 
-			videoBox.style.cssText = 'width:' + window.innerWidth + 'px; height: ' + window.innerHeight + 'px;'; 
+			videoPar.style.cssText = 'width:' + window.innerWidth + 'px; height: ' + window.innerHeight + 'px;'; 
 			// Apply a classname to the video and controls, if the designer needs it... 
-			videoBox.className = 'fullsizeVideo'; 
+			videoPar.className = 'fullsizeVideo'; 
 			mainCon.style.padding = 0;
 			// videoControls.className = 'fs-control'; 
 			// fullScreenToggleButton.className = "fs-active control"; 
@@ -117,10 +104,10 @@
 			isVideoFullScreen = false;
 
 			mainCon.style.padding = "0 44px";
-			videoBox.style.position = '';
-			videoBox.className = 'videoBox'; 
-			videoBox.style.width = "100%";
-			videoBox.style.height = "100%";
+			videoPar.style.position = '';
+			videoPar.className = 'videoBox'; 
+			videoPar.style.width = "100%";
+			videoPar.style.height = "100%";
 
 
 			// fullScreenToggleButton.className = "control"; 
