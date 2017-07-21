@@ -1,0 +1,176 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html,body{width:100%;height:100%;}
+p{
+    padding:10px 0;
+    text-align: justify;
+}
+.clearfix::before,.clearfix::after{
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    clear: both;
+}
+.mainCon{
+    padding: 0 44px;
+    /*?????文章主体内容的字体大小，我没找到????????????*/
+    font-size: 35px;
+}
+img {
+    width: 100%;
+}
+
+/******文章头部******/
+.contentTitle {
+    h1{
+        padding: 40px 0 0;
+        text-align: center;
+        font-size: 63px;
+    }
+    .writer{
+        font-size: 40px;
+        padding: 40px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .writer>.wriName{
+        float: left;
+    }
+    .writer>.wriTime{
+        float: right;
+    }
+}
+
+/******文章详情******/
+.contentDetial{
+    /*设计图40px，上下的p标签有10px内边距*/
+    padding: 40px 0;
+    /*video相关*/
+    .videoBox{
+        width: 100%;
+        margin: 30px 0;
+        position: relative;
+        /*display: none;*/
+        video{
+            width: 100%;
+        } 
+        
+        .controlBar{
+            // display:none;
+        }
+    }
+}
+
+
+/*传送门*/
+.gateway{
+    /*设计图40px，上下的p标签有10px内边距*/
+    padding:30px 0;
+    .gateHead{
+        padding-bottom: 24px;
+        font-size: 35px;
+        color: #9a9a9a;
+    }
+    .gateContent{
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 30px 0;
+        /*左*/
+        &>.conLeft{
+            float: left;
+            width: 112px;
+            height: 74px;
+            border: 1px solid red;
+        }
+        /*中*/
+        &>.conCenter{
+            float: left;
+            overflow: hidden;
+            padding-left: 30px;
+            width: 65%; 
+            .gcHead{
+                font-size: 35px;
+                color: #545454;
+                font-size: 35px;
+            }
+            gcContent{
+                font-size: 26px;
+                text-align: justify;
+                color: #9a9a9a;
+            }
+        }
+        /*右*/
+        &>.conRight{
+            float: right;
+            color: #f6a623;
+            font-size: 26px;
+            border: 1px solid red;
+            margin-top: 40px;
+        }
+    }
+}   
+
+/*如果JavaScript没有被用户禁用*/
+.js{
+    .videoBox .controlBar,.controlBar{
+        display:block;
+        position: absolute;
+        background-color: #334;
+        height: 100px;
+        width: 100%;
+        bottom: 12px;
+        .videoButton{
+            width: 80px;
+            height: 80px;
+            top: 10px;
+            color: white;
+            font-size: 40px;
+            background: transparent;
+            border: none;
+        }
+        #play{
+            position: absolute;
+            left: 10px;
+        }
+        #progress{
+            box-sizing: border-box;
+            width: 80%;
+            margin: 10px 10%;
+            // background:gray;
+            overflow: hidden;
+            #progress_box{
+                position: relative;
+                width: 80%;
+                height: 10px;
+                background: white;
+                margin-top: 35px;
+                margin: 35px 10% 0;
+            }
+            #play_progress{
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: white;
+                // border-radius: 50%;
+                top: -5px;
+                left: 0px;
+            }
+        }
+        #fullScreen{
+            position: absolute;
+            right:10px;
+        }
+    }
+} 
+// 
+.fullsizeVideo{
+    position: fixed;
+    background: black;
+    top:0;
+}
+.fullsizeVideo>video{
+    width:100%;
+}
+
