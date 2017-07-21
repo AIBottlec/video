@@ -172,9 +172,13 @@ img {
 }
 .fullsizeVideo .videoBox{
     position:absolute;
-    margin: 0;
+    margin: 00;
 }
-.fullsizeVideo>.controlBar{
+@media screen and (orientation:portrait) {
+    .fullsizeVideo .videoBox{
+        top:30%;
+    }
+}
+@media screen and (orientation:landscape) {}
 
-}
 

@@ -167,5 +167,10 @@ img {
 }
 .fullsizeVideo .videoBox {
   position: absolute;
-  margin: 0;
+  margin: 00;
+}
+@media screen and (orientation: portrait) {
+  .fullsizeVideo .videoBox {
+    top: 30%;
+  }
 }
