@@ -9,6 +9,7 @@
 	 progressContainer = document.getElementById("progress"), 
 	 progressHolder = document.getElementById("progress_box"), 
 	 playProgressBar = document.getElementById("play_progress"), 
+	 playProgressBar2 = document.getElementById("play_progress2"), 
 	 fullScreenToggleButton = document.getElementById("fullScreen"),
 	 isVideoFullScreen = false;
 
@@ -29,11 +30,12 @@
 			fullScreenToggleButton.addEventListener("click", function(){ 
 				isVideoFullScreen ? that.fullScreenOff() : that.fullScreenOn(); 
 			}, true);
+
 		},
 
 		initializeControls:function() { 
 			// When all meta information has loaded, show controls 
-			videoPlayer.showHideControls(); 
+			// videoPlayer.showHideControls(); 
 		},
 		showHideControls : function() { 
 			// Shows and hides the video player. 
@@ -84,6 +86,8 @@
 					video.currentTime = 0; 
 				} 
 				video.play(); 
+				videoPlayer.videoScrubbing();
+
 			} else { 
 				video.pause(); 
 			} 
@@ -129,11 +133,42 @@
 		},
 		updatePlayProgress : function(){
 			var proTime = (video.currentTime / video.duration); 
-			playProgressBar.style.left = proTime * (progressHolder.offsetWidth) + "px"; 
+			playProgressBar.style.width = proTime * (progressHolder.offsetWidth-5) + "px"; 
+			playProgressBar2.style.left = playProgressBar.offsetWidth -5 + "px";
 		},
 		// Video was stopped, so stop updating progress. 
 		stopTrackingPlayProgress : function(){ 
 			clearTimeout( playProgressInterval ); 
+		},
+
+		// ////////////////
+		videoScrubbing : function() { 
+			progressHolder.addEventListener("mousedown", function(){ 
+				videoPlayer.stopTrackingPlayProgress(); 
+				videoPlayer.playPause(); 
+				document.onmousemove = function(e) { 
+					videoPlayer.setPlayProgress( e.pageX ); 
+				} 
+				progressHolder.onmouseup = function(e) { 
+					document.onmouseup = null; 
+					document.onmousemove = null; 
+					video.play(); 
+					videoPlayer.setPlayProgress( e.pageX ); 
+					videoPlayer.trackPlayProgress(); 
+				} 
+			}, true); 
+		}, 
+		setPlayProgress : function( clickX ) { 
+			var newPercent = Math.max( 0, Math.min(1, (clickX - this.findPosX(progressHolder)) / progressHolder.offsetWidth) ); 
+			video.currentTime = newPercent * video.duration; 
+			playProgressBar.style.width = newPercent * (progressHolder.offsetWidth) + "px"; 
+		}, 
+		findPosX : function(progressHolder) { 
+				var curleft = progressHolder.offsetLeft; 
+				while( progressHolder = progressHolder.offsetParent ) { 
+					curleft += progressHolder.offsetLeft; 
+				} 
+			return curleft; 
 		}
 	}
 	
